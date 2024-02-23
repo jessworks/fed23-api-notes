@@ -1,1 +1,3 @@
-console.log("hello");
+import printDocuments from "./printDocuments.js";
+
+printDocuments();
