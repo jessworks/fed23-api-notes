@@ -49,4 +49,22 @@ app.post("/document", (req, res) => {
     })
 })
 
+app.delete("/document/:documentId", (req, res) => {
+    let documentId = req.params.documentId;
+
+    connection.connect((err) => {
+        if (err) console.log("err", err);
+
+        let query = "UPDATE docsgalore SET soft_delete = 1 WHERE id = ?";
+        let values = [documentId];
+
+        connection.query(query, values, (err, data) => {
+            if (err) console.log("err", err);
+
+            console.log("documents", data);
+            res.json({message: "document deleted"});
+        })
+    })
+})
+
 module.exports = app;

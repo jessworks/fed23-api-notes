@@ -1,3 +1,5 @@
+import deleteDoc from "./deleteDoc.js";
+
 let documentList = document.querySelector("#documentList");
 
 export default function printDocs() {
@@ -9,17 +11,22 @@ export default function printDocs() {
         documentList.innerHTML = "";
 
         data.map(docsgalore => {
-            let li = document.createElement("li");
-            li.innerText = docsgalore.document;
-            documentList.appendChild(li);
+            
+            let listItem = document.createElement("li");
+            listItem.innerText = docsgalore.document;
+            documentList.appendChild(listItem);
 
             let editBtn = document.createElement("button");
             editBtn.textContent = "edit";
-            li.appendChild(editBtn);
+            listItem.appendChild(editBtn);
 
             let deleteBtn = document.createElement("button");
             deleteBtn.textContent = "delete";
-            li.appendChild(deleteBtn);
+            listItem.appendChild(deleteBtn);
+
+            deleteBtn.addEventListener("click", () => { //vad fattas?
+                deleteDoc(docsgalore.id)
+            })
         })
     })
 }
