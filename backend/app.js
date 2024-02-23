@@ -30,4 +30,23 @@ app.get("/document", (req, res) => {
     })
 })
 
+app.post("/document", (req, res) => {
+
+    let document = req.body.document;
+
+    connection.connect((err) => {
+        if (err) console.log("err", err);
+
+        let query = "INSERT into docsgalore (document) VALUES (?)";
+        let values = [document]; 
+        
+        connection.query(query, values, (err, data) => {
+            if (err) console.log("err", err);
+
+            console.log("documents", data);
+            res.json({message: "document saved"});
+        })
+    })
+})
+
 module.exports = app;

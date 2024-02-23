@@ -1,3 +1,4 @@
-import printDocuments from "./printDocuments.js";
+import printDocs from "./printDocs.js";
+import addDocs from "./addDocs.js";
 
-printDocuments();
+printDocs();

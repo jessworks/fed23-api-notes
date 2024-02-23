@@ -1,10 +1,12 @@
 let documentList = document.querySelector("#documentList");
 
-export default function printDocuments() {
+export default function printDocs() {
     fetch("http://localhost:3000/document")
     .then(res => res.json())
     .then(data => {
         console.log("documents", data);
+
+        documentList.innerHTML = "";
 
         data.map(docsgalore => {
             let li = document.createElement("li");
