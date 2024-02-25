@@ -67,4 +67,24 @@ app.delete("/document/:documentId", (req, res) => {
     })
 })
 
+/*
+app.update("/document/:documentId", (req, res) => {
+    let documentId = req.params.documentId;
+
+    connection.connect((err) => {
+        if (err) console.log("err", err);
+
+        let query = "UPDATE docsgalore SET document = ? WHERE id = ?";
+        let values = [...det som finns i den redigerade inputen..., documentId];
+
+        connection.query(query, values, (err, data) => {
+            if (err) console.log("err", err);
+
+            console.log("documents", data);
+            res.json({message: "document changed"});
+        })
+    })
+})
+*/
+
 module.exports = app;

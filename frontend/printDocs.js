@@ -22,11 +22,14 @@ export default function printDocs() {
 
             let deleteBtn = document.createElement("button");
             deleteBtn.textContent = "delete";
-            listItem.appendChild(deleteBtn);
 
             deleteBtn.addEventListener("click", () => { //vad fattas?
                 deleteDoc(docsgalore.id)
             })
+
+            listItem.appendChild(deleteBtn);
+
+            
         })
     })
 }
