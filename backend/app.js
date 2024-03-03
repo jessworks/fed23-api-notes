@@ -19,7 +19,7 @@ app.get("/document", (req, res) => {
         if (err) console.log("err", err);
     
 
-        let query = "SELECT * FROM docsgalore";
+        let query = "SELECT * FROM docsgalore WHERE soft_delete = 0";
 
         connection.query(query, (err, data) => {
             if (err) console.log("err", err);

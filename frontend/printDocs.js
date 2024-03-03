@@ -23,7 +23,7 @@ export default function printDocs() {
             let deleteBtn = document.createElement("button");
             deleteBtn.textContent = "delete";
 
-            deleteBtn.addEventListener("click", () => { //vad fattas, vart ska den vara?
+            deleteBtn.addEventListener("click", () => {
                 deleteDoc(docsgalore.id)
             })
 
