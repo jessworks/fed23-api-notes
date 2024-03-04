@@ -1,13 +1,15 @@
 import printDocs from "./printDocs.js";
 
-let newDocument = document.querySelector("#newDocument");
+let newDocumentTitle = document.querySelector("#newDocumentTitle");
+let newDocumentNotes = document.querySelector("#newDocumentNotes")
 let saveNewDocumentBtn = document.querySelector("#saveNewDocumentBtn");
 
 export default saveNewDocumentBtn.addEventListener("click", () => {
     console.log("click");
 
     let saveDocument = {
-        document: newDocument.value
+        document: newDocumentTitle.value,
+        notes: newDocumentNotes.value
     }
 
     fetch("http://localhost:3000/document", {
@@ -20,7 +22,8 @@ export default saveNewDocumentBtn.addEventListener("click", () => {
     .then(res => res.json())
     .then(data => {
         console.log("save document", data);
-        newDocument.value = "";
+        newDocumentTitle.value = "";
+        newDocumentNotes.value = "";
 
         printDocs();
     })
