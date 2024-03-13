@@ -24,9 +24,9 @@ export default function printDocs() {
             documentNotes.innerText = docsgalore.notes;
             listItem.appendChild(documentNotes);
 
-            let editBtn = document.createElement("button");
-            editBtn.textContent = "edit";
-            listItem.appendChild(editBtn);
+            let openBtn = document.createElement("button");
+            openBtn.textContent = "open";
+            listItem.appendChild(openBtn);
 
             let deleteBtn = document.createElement("button");
             deleteBtn.textContent = "delete";
