@@ -13,8 +13,16 @@ export default function printDocs() {
         data.map(docsgalore => {
             
             let listItem = document.createElement("li");
-            listItem.innerText = docsgalore.document;
+            //listItem.innerText = docsgalore.document;
             documentList.appendChild(listItem);
+
+            let documentTitle = document.createElement("h2");
+            documentTitle.innerText = docsgalore.document;
+            listItem.appendChild(documentTitle);
+
+            let documentNotes = document.createElement("p");
+            documentNotes.innerText = docsgalore.notes;
+            listItem.appendChild(documentNotes);
 
             let editBtn = document.createElement("button");
             editBtn.textContent = "edit";
