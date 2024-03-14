@@ -3,6 +3,6 @@ let pageContent = document.querySelector("#pageContent");
 
 export default loginBtn.addEventListener("click", () => {
     
-    pageContent.style.display = 'block';
-
+    pageContent.style.display = "block";
+    loginBtn.style.display = "none";
 });

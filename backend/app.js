@@ -68,7 +68,7 @@ app.delete("/document/:documentId", (req, res) => {
 })
 
 /*
-app.update("/document/:documentId", (req, res) => {
+app.patch("/document/:documentId", (req, res) => {
     let documentId = req.params.documentId;
 
     connection.connect((err) => {

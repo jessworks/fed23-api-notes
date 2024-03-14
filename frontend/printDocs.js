@@ -1,3 +1,4 @@
+import readEditDoc from "./readEditDoc.js";
 import deleteDoc from "./deleteDoc.js";
 
 let documentList = document.querySelector("#documentList");
@@ -13,7 +14,6 @@ export default function printDocs() {
         data.map(docsgalore => {
             
             let listItem = document.createElement("li");
-            //listItem.innerText = docsgalore.document;
             documentList.appendChild(listItem);
 
             let documentTitle = document.createElement("h2");
@@ -26,6 +26,11 @@ export default function printDocs() {
 
             let openBtn = document.createElement("button");
             openBtn.textContent = "open";
+
+            openBtn.addEventListener("click", () => {
+                readEditDoc(docsgalore.id);
+            })
+
             listItem.appendChild(openBtn);
 
             let deleteBtn = document.createElement("button");
@@ -41,3 +46,4 @@ export default function printDocs() {
         })
     })
 }
+
