@@ -69,7 +69,7 @@ app.delete("/document/:documentId", (req, res) => {
 
 app.get("/document/:documentId", (req, res) => {
     let documentId = req.params.documentId;
-    
+
     connection.connect((err) => {
         if (err) console.log("err", err);
     
@@ -86,15 +86,16 @@ app.get("/document/:documentId", (req, res) => {
     })
 })
 
-/*
+
 app.patch("/document/:documentId", (req, res) => {
     let documentId = req.params.documentId;
+    let { document, notes } = req.body;
 
     connection.connect((err) => {
         if (err) console.log("err", err);
 
-        let query = "UPDATE docsgalore SET document = ? notes = ? WHERE id = ?";
-        let values = [...det som finns i den redigerade inputen..., documentId];
+        let query = "UPDATE docsgalore SET document = ?, notes = ? WHERE id = ?";
+        let values = [document, notes, documentId];
 
         connection.query(query, values, (err, data) => {
             if (err) console.log("err", err);
@@ -104,6 +105,6 @@ app.patch("/document/:documentId", (req, res) => {
         })
     })
 })
-*/
+
 
 module.exports = app;

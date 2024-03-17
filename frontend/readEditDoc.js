@@ -6,7 +6,7 @@ export default function readEditDoc(documentId) {
     console.log("readEditDoc", documentId);
 
     
-    fetch("http://localhost:3000/document/" + documentId) // vad missar jag, 500 error
+    fetch("http://localhost:3000/document/" + documentId)
     .then(res => res.json())
     .then(data => {
         console.log("fetch", data);
@@ -72,12 +72,12 @@ export default function readEditDoc(documentId) {
         // UPDATE db
         // printa listan på nytt
 
-    /*       
+           
         saveBtn.addEventListener("click", () => {
 
             let updateDocument = {
-                openDocumentTitle.value,
-                openDocumentNotes.value
+                document: openDocumentTitleTextarea.value,
+                notes: openDocumentNotesTextarea.value
             };
 
             fetch("http://localhost:3000/document/" + documentId, {
@@ -91,12 +91,11 @@ export default function readEditDoc(documentId) {
             .then(data => {
                 console.log("update document", data);
 
-                openDocumentTitle.value = "";
-                openDocumentNotes.value = "";
+                openDocumentTitleTextarea.value = "";
+                openDocumentNotesTextarea.value = "";
 
                 printDocs();
-        })
-       */
-    
+            })
+        }) 
     })
 };
