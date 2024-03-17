@@ -28,7 +28,7 @@ export default function printDocs() {
             openBtn.textContent = "open";
 
             openBtn.addEventListener("click", () => {
-                readEditDoc(docsgalore.id);
+                readEditDoc(docsgalore.id)
             })
 
             listItem.appendChild(openBtn);

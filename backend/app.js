@@ -67,6 +67,23 @@ app.delete("/document/:documentId", (req, res) => {
     })
 })
 
+app.get("/document/:documentId", (req, res) => {
+    connection.connect((err) => {
+        if (err) console.log("err", err);
+    
+
+        let query = "SELECT * FROM docsgalore WHERE id = ?";
+        let values = [documentId];
+
+        connection.query(query, values, (err, data) => {
+            if (err) console.log("err", err);
+
+            console.log("documents", data);
+            res.json(data);
+        })
+    })
+})
+
 /*
 app.patch("/document/:documentId", (req, res) => {
     let documentId = req.params.documentId;
@@ -74,7 +91,7 @@ app.patch("/document/:documentId", (req, res) => {
     connection.connect((err) => {
         if (err) console.log("err", err);
 
-        let query = "UPDATE docsgalore SET document = ? WHERE id = ?";
+        let query = "UPDATE docsgalore SET document = ? notes = ? WHERE id = ?";
         let values = [...det som finns i den redigerade inputen..., documentId];
 
         connection.query(query, values, (err, data) => {

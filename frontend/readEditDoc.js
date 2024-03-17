@@ -5,12 +5,13 @@ let openDocument = document.querySelector("#openDocument");
 export default function readEditDoc(documentId) {
     console.log("readEditDoc", documentId);
 
-    /*
-    fetch("http://localhost:3000/document")
-    .then(res => res.json)
+    
+    fetch("http://localhost:3000/document/" + documentId) // vad missar jag, 500 error
+    .then(res => res.json())
     .then(data => {
         console.log("fetch", data);
-    */
+        
+        // vad ska jag skriva här, loopar inte igenom allt endast printa för valt id
 
         let openDocumentTitleLabel = document.createElement("label");
         openDocumentTitleLabel.setAttribute("for", "openDocumentTitle");
@@ -34,18 +35,18 @@ export default function readEditDoc(documentId) {
         openDocumentNotesTextarea.id = "openDocumentNotes";
         openDocumentNotesTextarea.name = "openDocumentNotes";
         openDocumentNotesTextarea.setAttribute("readonly", "true");
-        openDocumentNotesTextarea.rows = 15;
+        openDocumentNotesTextarea.rows = 15;    
         openDocumentNotesTextarea.cols = 50;
         openDocument.appendChild(openDocumentNotesTextarea);
 
-
+        
         let editBtn = document.createElement("button");
         editBtn.innerText = "edit";
         openDocument.appendChild(editBtn);
 
         editBtn.addEventListener("click", () => {
-            openDocumentTitleTextarea.removeAttribute("readonly", "false");
-            openDocumentNotesTextarea.removeAttribute("readonly", "false");
+            openDocumentTitleTextarea.removeAttribute("readonly");
+            openDocumentNotesTextarea.removeAttribute("readonly");
         })
 
 
@@ -53,14 +54,12 @@ export default function readEditDoc(documentId) {
         closeBtn.innerText = "close";
         openDocument.appendChild(closeBtn);
 
-        /*
-        closeBtn.addEventListener("click", () => {          // ! hur ta bort attributet igen !
-            openDocument.setAttribute("hidden", "true");
+        closeBtn.addEventListener("click", () => {
+            //openDocument.setAttribute("hidden", "true");    hur ta bort attributet igen
 
-            openDocumentTitle = "";
-            openDocumentNotes = "";
+            openDocumentTitleTextarea.value = "";
+            openDocumentNotesTextarea.value = "";
         })
-        */
 
     
         let saveBtn = document.createElement("button");
@@ -80,7 +79,7 @@ export default function readEditDoc(documentId) {
             };
 
             fetch("http://localhost:3000/document/" + documentId, {
-                method: "UPDATE",
+                method: "PATCH",
                 headers: {
                     "Content-Type": "application/json"
                 },
@@ -95,11 +94,7 @@ export default function readEditDoc(documentId) {
 
                 printDocs();
         })
-
-        
-    })
-
-
-       */ 
+       */
+    
     })
 };
