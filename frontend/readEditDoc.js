@@ -11,7 +11,7 @@ export default function readEditDoc(documentId) {
     .then(data => {
         console.log("fetch", data);
         
-        // vad ska jag skriva här, loopar inte igenom allt endast printa för valt id
+        const foundDocument = data.find(doc => doc.id === documentId);
 
         let openDocumentTitleLabel = document.createElement("label");
         openDocumentTitleLabel.setAttribute("for", "openDocumentTitle");
@@ -24,6 +24,7 @@ export default function readEditDoc(documentId) {
         openDocumentTitleTextarea.setAttribute("readonly", "true");
         openDocumentTitleTextarea.rows = 1;
         openDocumentTitleTextarea.cols = 50;
+        openDocumentTitleTextarea.value = foundDocument.document;
         openDocument.appendChild(openDocumentTitleTextarea);
 
         let openDocumentNotesLabel = document.createElement("label");
@@ -37,6 +38,7 @@ export default function readEditDoc(documentId) {
         openDocumentNotesTextarea.setAttribute("readonly", "true");
         openDocumentNotesTextarea.rows = 15;    
         openDocumentNotesTextarea.cols = 50;
+        openDocumentNotesTextarea.value = foundDocument.notes;
         openDocument.appendChild(openDocumentNotesTextarea);
 
         

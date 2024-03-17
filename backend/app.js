@@ -68,6 +68,8 @@ app.delete("/document/:documentId", (req, res) => {
 })
 
 app.get("/document/:documentId", (req, res) => {
+    let documentId = req.params.documentId;
+    
     connection.connect((err) => {
         if (err) console.log("err", err);
     
