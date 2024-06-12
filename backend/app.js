@@ -32,13 +32,13 @@ app.get("/document", (req, res) => {
 
 app.post("/document", (req, res) => {
 
-    let document = req.body.document;
+    let { document, notes } = req.body;
 
     connection.connect((err) => {
         if (err) console.log("err", err);
 
-        let query = "INSERT into docsgalore (document) VALUES (?)";
-        let values = [document]; 
+        let query = "INSERT into docsgalore (document, notes) VALUES (?, ?)";
+        let values = [document, notes]; 
         
         connection.query(query, values, (err, data) => {
             if (err) console.log("err", err);
